@@ -1,0 +1,89 @@
+<!-- edited with XMLSpy v2010 rel. 3 (x64) (http://www.altova.com) by Ryan Clark (private) -->
+<xs:schema xmlns:aasg="http://stategeothermaldata.org/uri-gin/aasg/xmlschema/welllog/0.8" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:gmlsf="http://www.opengis.net/gmlsf" targetNamespace="http://stategeothermaldata.org/uri-gin/aasg/xmlschema/welllog/0.8" elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.8">
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gmlsf" schemaLocation="http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsfLevels.xsd"/>
+	<xs:annotation>
+		<!-- This XSD document, including XML schema, indicates the content requested for AASG geothermal data interoperable web services for description of well log data. These will be point features that locate the well origin for a well bore from which a well log is available.  The well log observation record describes the log (type, top and bottom of logged interval) and provides links to representations of the actual log data, which typically will be either a paper copy, scanned image, or LAS file.  Each data point will correspond to an individual log from a borehole; thus there may be multiple data points per well.  WellBoreURI for the logged wellbore is the cross-referencing link (foreign key) used to associate the header record, well log records, temperature measurements, and other information from a particular borehole.-->
+		<!--This XSD document was created on 2012-05-25 by Christy Caudill, AZGS.  This schema is based on the data available in the AASG Web Feature Services created for the heat flow measurements of samples collected from boreholes and core.  Later versions include samples from the surface. -->
+		<xs:appinfo source="http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsfLevels.xsd">
+			<gmlsf:ComplianceLevel>0</gmlsf:ComplianceLevel>
+			<gmlsf:GMLProfileSchema>
+http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsf.xsd </gmlsf:GMLProfileSchema>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="WellLog" type="aasg:WellLogType" substitutionGroup="gml:_Feature"/>
+	<xs:complexType name="WellLogType">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="OBJECTID" type="xs:int" minOccurs="0"/>
+					<xs:element name="LogURI">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="255"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="OtherLogID" type="xs:string" minOccurs="0"/>
+					<xs:element name="DisplayName" type="xs:string"/>
+					<xs:element name="Notes" type="xs:string" minOccurs="0"/>
+					<xs:element name="LogTypeTerm" type="xs:string"/>
+					<xs:element name="LogTypeName" type="xs:string" minOccurs="0"/>
+					<xs:element name="WellBoreURI">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="255"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="WellBoreName" type="xs:string" minOccurs="0"/>
+					<xs:element name="APINo" type="xs:string" minOccurs="0"/>
+					<xs:element name="ParentWellURI" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="255"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Keywords" type="xs:string" minOccurs="0"/>
+					<xs:element name="SpudDate" type="xs:string" minOccurs="0"/>
+					<xs:element name="WellType" type="xs:string"/>
+					<xs:element name="Status" type="xs:string" minOccurs="0"/>
+					<xs:element name="CommodityOfInterest" type="xs:string" minOccurs="0"/>
+					<xs:element name="StatusDate" type="xs:string" minOccurs="0"/>
+					<xs:element name="Function" type="xs:string" minOccurs="0"/>
+					<xs:element name="Production" type="xs:string" minOccurs="0"/>
+					<xs:element name="ProducingInterval" type="xs:string" minOccurs="0"/>
+					<xs:element name="County" type="xs:string"/>
+					<xs:element name="State" type="xs:string"/>
+					<xs:element name="Field" type="xs:string" minOccurs="0"/>
+					<xs:element name="OtherLocationName" type="xs:string" minOccurs="0"/>
+					<xs:element name="PLSS_Meridians" type="xs:string" minOccurs="0"/>
+					<xs:element name="TWP" type="xs:string" minOccurs="0"/>
+					<xs:element name="RGE" type="xs:string" minOccurs="0"/>
+					<xs:element name="Section_" type="xs:string" minOccurs="0"/>
+					<xs:element name="SectionPart" type="xs:string" minOccurs="0"/>
+					<xs:element name="Parcel" type="xs:string" minOccurs="0"/>
+					<xs:element name="LatDegree" type="xs:double"/>
+					<xs:element name="LongDegree" type="xs:double"/>
+					<xs:element name="SRS" type="xs:string"/>
+					<xs:element name="LocationUncertaintyStatement" type="xs:string"/>
+					<xs:element name="DrillerTotalDepth_ft" type="xs:double"/>
+					<xs:element name="WellBoreShape" type="xs:string" minOccurs="0"/>
+					<xs:element name="ElevationGL_ft" type="xs:double"/>
+					<xs:element name="TopLoggedInterval_ft" type="xs:double"/>
+					<xs:element name="BottomLoggedInterval_ft" type="xs:double"/>
+					<xs:element name="DateTimeLogRun" type="xs:string"/>
+					<xs:element name="PaperCopyLocation" type="xs:string" minOccurs="0"/>
+					<xs:element name="ScannedFileURL" type="xs:string" minOccurs="0"/>
+					<xs:element name="LASFileURL" type="xs:string" minOccurs="0"/>
+					<xs:element name="OtherDistribution" type="xs:string" minOccurs="0"/>
+					<xs:element name="RelatedResource" type="xs:string" minOccurs="0"/>
+					<xs:element name="Source" type="xs:string"/>
+					<xs:element name="Shape" type="gml:PointPropertyType"/>
+					<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
