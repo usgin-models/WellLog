@@ -4,7 +4,7 @@
 	<xs:import namespace="http://www.opengis.net/gmlsf" schemaLocation="http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsfLevels.xsd"/>
 	<xs:annotation>
 		<!-- This XSD document, including XML schema, indicates the content requested for AASG geothermal data interoperable web services for description of well log data. These will be point features that locate the well origin for a well bore from which a well log is available. The well log observation record describes the log (type, top and bottom of logged interval) and provides links to representations of the actual log data, which typically will be either a paper copy, scanned image, or LAS file. Each data point will correspond to an individual log from a borehole; thus there may be multiple data points per well. WellBoreURI for the logged wellbore is the cross-referencing link (foreign key) used to associate the header record, well log records, temperature measurements, and other information from a particular borehole.-->
-		<!--Annotated version 0.8.1. This XSD document was created on 2012-05-25 by Christy Caudill, AZGS. This schema is based on the data available in the AASG Web Feature Services created for the heat flow measurements of samples collected from boreholes and core. Later versions include samples from the surface. Field Description annotations standardized 2013-08-22 by Esty Pape, AZGS.-->
+		<!--Version 0.8.2 changed date types to 'dateTime'. Annotated version 0.8.1. This XSD document was created on 2012-05-25 by Christy Caudill, AZGS. This schema is based on the data available in the AASG Web Feature Services created for the heat flow measurements of samples collected from boreholes and core. Later versions include samples from the surface. Field Description annotations standardized 2013-08-22 by Esty Pape, AZGS.-->
 		<xs:appinfo source="http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsfLevels.xsd">
 			<gmlsf:ComplianceLevel>0</gmlsf:ComplianceLevel>
 			<gmlsf:GMLProfileSchema>
@@ -77,7 +77,7 @@ http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsf.xsd </gml
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="ParentWellURI" minOccurs="0">
-					<xs:annotation>
+						<xs:annotation>
 							<xs:documentation>The unique identifier for the well that contains the wellbore identified by WellBoreURI.   If the WellBoreURI identifies one of several wellbores within a well, this element is mandatory. Best practice is to define an http URI that will dereference to a normative description of the well. </xs:documentation>
 						</xs:annotation>
 						<xs:simpleType>
@@ -91,7 +91,7 @@ http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsf.xsd </gml
 							<xs:documentation>Keywords to index this well log. Keywords provide a means to enable use of more controlled term lists to improve search precision. Names of the operator, lease owner and driller of the well bore might be included here. Suggest expanding abbreviations, avoid use of punctuation or special characters, separate keyword or keyword phrases with pipe '|' character.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="SpudDate" type="xs:string" minOccurs="0">
+					<xs:element name="SpudDate" type="xs:dateTime" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Date on which drilling of the well bore began. Day, month and year must be specified; Excel will display using ISO 8601 date and time (yyyy-mm-ddT:hh:mm) format. If only the year is known, enter month and day as 'Jan. 1'. If year is unknown, enter 1900. All dates will be converted to yyyy-mm-ddThh:mm. This is intended as a searching aid.</xs:documentation>
 						</xs:annotation>
@@ -111,7 +111,7 @@ http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsf.xsd </gml
 							<xs:documentation>The commodity of interest associated with the borehole.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="StatusDate" type="xs:string" minOccurs="0">
+					<xs:element name="StatusDate" type="xs:dateTime" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>The status of the feature can change from time to time, thus it is useful to know the date on which a given status was reported. Day, month and year must be specified; Excel will display using ISO 8601 date and time (yyyy-mm-ddT:hh:mm) format. If only the year is known, enter month and day as 'Jan. 1', (or '1/1/', or '1-1-', or 'January 1,'). All dates will be converted to yyyy-mm-ddThh:mm.</xs:documentation>
 						</xs:annotation>
@@ -226,7 +226,7 @@ http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsf.xsd </gml
 							<xs:documentation>Depth to the bottom of the logged interval (report in feet below ground level reported in the ElevationGL_ft field).</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="DateTimeLogRun" type="xs:string">
+					<xs:element name="DateTimeLogRun" type="xs:dateTime">
 						<xs:annotation>
 							<xs:documentation>Date on which measurement was made. Day, month and year must be specified; Excel will display using ISO 8601 date and time (yyyy-mm-ddT:hh:mm) format. If only the year is known, enter month and day as 'Jan. 1', (or '1/1/', or '1-1-', or 'January 1,'). All dates will be converted to yyyy-mm-ddThh:mm.</xs:documentation>
 						</xs:annotation>
